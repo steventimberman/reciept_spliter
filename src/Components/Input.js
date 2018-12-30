@@ -17,8 +17,7 @@ class Inputs extends Component {
 		return (
 			<Grid container spacing={16}>
 				<Grid item xs={12}>
-					<Grid container justify="center" spacing={16}>
-						<Typography varient='h2' align='left'>Check Information</Typography>
+					<Grid container justify="center" spacing={8}>
 						<Grid item xs={12}>
 				          <Paper>
 				          	<form>
@@ -26,12 +25,9 @@ class Inputs extends Component {
 				          	</form>
 				          </Paper>
 				        </Grid>
-				        <Typography varient='h2' align='left'>Individual item information</Typography>
 			          	<Grid item xs={12}>
-				          <Paper>
-				          	
+				          <Paper>	
 				          	<InputItem itemAddHandler={itemAddHandler} state={state}/>				
-				          	
 				          </Paper>
 				        </Grid>				 
 			        </Grid>

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from './Header'
 import Inputs from './Input'
-import updateStateObj from './updateState'
+import updateStateObj from '../Logic/updateState'
 import Grid from '@material-ui/core/Grid';
 import OwedAmount from './OwedAmount'
-import addItems from './addItems'
+import addItems from '../Logic/addItems'
 import ItemsList from './ItemsList'
+import TableObject from "./TableObject"
+
 
 
 
@@ -19,6 +20,7 @@ class App extends Component {
       total: 0,
       tip: 20,
       items: [],
+      itemsTotal:0
     };
     this.handleUpdate  = this.handleUpdate.bind(this);
     this.handleItemAdd = this.handleItemAdd.bind(this);
@@ -31,9 +33,9 @@ class App extends Component {
 
   }
 
-  handleItemAdd (items, price) {
+  handleItemAdd (items, itemsTotal, price) {
 
-    this.setState(addItems(items, price))
+    this.setState(addItems(items, itemsTotal, price))
 
   }
 
@@ -45,8 +47,7 @@ class App extends Component {
       <div className="App">
         <Grid container spacing={16}><Grid item xs={12}><Header/></Grid></Grid>
         <Grid container spacing={16}><Grid item xs={12}><Inputs updateHandler={this.handleUpdate} itemAddHandler={this.handleItemAdd} state={this.state}/></Grid></Grid>
-        <Grid container spacing={16}><Grid item xs={12}><ItemsList items={this.state.items}/></Grid></Grid>
-        <Grid container spacing={16} justify="center"><Grid item xs={4}><OwedAmount state={this.state}/></Grid></Grid>
+        <Grid container spacing={16} justify="center"><Grid item xs={12}><TableObject state={this.state}/></Grid></Grid>
       </div>
     );
   }

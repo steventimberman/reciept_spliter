@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import calculateOwedAmount from './calculateOwedAmount'
+import calculateOwedAmount from '../Logic/calculateOwedAmount'
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 
 class OwedAmount extends Component {
 
@@ -11,11 +13,12 @@ class OwedAmount extends Component {
 
 		if (state.subtotal && state.total && state.tip && state.items.length > 0) {
 			var total = 0
-			var sum = state.items.map((item) => (total += Number(item)))
-			console.log(total)
+			state.items.map((item) => (total += Number(item)))
 			var owed = calculateOwedAmount(state.subtotal, state.total, state.tip, total);
-			return (<Paper>You owe ${owed}</Paper>)
-		}else {return <Paper>Please enter information about your check!</Paper>}
+			return (<Grid item xs={2}><Paper>You owe ${owed}</Paper></Grid>)
+		}else {
+			return <Grid item xs={4}><Paper>Please enter information about your check!</Paper></Grid>
+		}
 	}
 
 }

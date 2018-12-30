@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import Typography from '@material-ui/core/Typography';
+import NumberFormat from 'react-number-format';
+
 
 class ReceiptSpecs extends Component {
 	
@@ -9,9 +12,11 @@ class ReceiptSpecs extends Component {
 		var { state } = this.props;
 		return (
 			<div>
+				<Typography variant="subtitle1">Check Information</Typography>
 				<TextField
 					name="subtotal"
 					type="number"
+					placeholder="0"
 					onChange={(e) => this.props.updateHandler(e.target.name, e.target.value)}
 					label="Subtotal"
 					value={state.subtotal}
@@ -22,6 +27,7 @@ class ReceiptSpecs extends Component {
 				<TextField
 					name='total'
 					type="number"
+					placeholder="0"
 					onChange={(e) => this.props.updateHandler(e.target.name, e.target.value)}
 					label="Total"
 					value={state.total}
